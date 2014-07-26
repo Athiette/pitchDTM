@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Dice Thresholdometer</title>
+  <meta charset="utf-8">
+  <meta name="description" content="The Dice Thresholdometer">
+  <meta name="author" content="Andrew Reid">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>The Dice Thresholdometer</h1>
+    <h2></h2>
+    <p>Andrew Reid<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>The Problem</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Many games have mechanics where you roll a bunch of six-sided dice and have to get a certain number of successes. </p>
+
+<ul>
+<li><p>Say you&#39;re designing one of these games, shouldn&#39;t you know how hard it is to achieve the goals you set?</p></li>
+<li><p>If you play one of them, and you are choosing between two actions with different goals, wouldn&#39;t it be great to know how likely you are to succeed in each?</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>The Dice Thresholdometer</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Enter the Dice Thresholdometer, the simple shiny app that will generate those probabilities for you!</p>
+
+<p>Simply enter the number of dice you are rolling, the number of successes you need, tell the app which of the common choices for success applies, and voila, instant probability.</p>
+
+<p>For the mathematically minded among you, here&#39;s an example. Say you are rolling 18 six-sided dice looking for at least 10 successes, in a game where any roll over &#39;4&#39; is a success. The probability is calculated by running:</p>
+
+<pre><code class="r">chance &lt;- 0
+for (n in 10:18) {
+      chance &lt;- chance + (choose(18,n)*(3/6)^(n)*(3/6)^(18 - n))    
+} 
+print(chance)
+</code></pre>
+
+<pre><code>## [1] 0.4073
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Why is it important to check these things?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Well, with large numbers of dice given the change in the probability for a given required number of successes can be steep, as you can see from this plot for 14 six sided dice.</p>
+
+<p><img src="assets/fig/unnamed-chunk-2.png" alt="plot of chunk unnamed-chunk-2"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Greater knowledge means better choices</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Either improve your game design to make risky decisions neither trivial nor impossible, or never waste time trying things you&#39;re vanishingly unlikely to succeed on. </p></li>
+<li><p>Create well balanced games or make good strategic decisions. </p></li>
+</ul>
+
+<p>Any time you want to know the probabilities, use the Dice Thresholdometer to get them!</p>
+
+<p><a href="http://athiator.shinyapps.io/diceThresholdometer/">http://athiator.shinyapps.io/diceThresholdometer/</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='The Problem'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='The Dice Thresholdometer'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Why is it important to check these things?'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Greater knowledge means better choices'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
